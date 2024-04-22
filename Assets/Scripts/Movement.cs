@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,10 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     //Created by Jayden, dont edit it
-    int carSpeed = 1;
-    int accelCar = 1;
-    int maxSpeed = 50;
+    [SerializeField] float carSpeed = 0;
+    [SerializeField] float accelCar = 1;
+    [SerializeField] int maxSpeed = 10;
+    [SerializeField] float deAccel = 5f;
    
     Vector3 forward = new Vector3(0,0,1);
     Vector3 backward = new Vector3(0, 0, -1);
@@ -16,8 +18,12 @@ public class Movement : MonoBehaviour
     Vector3 left = new Vector3(-1, 0, 0);
     
     Vector3 playerMove;
+    Vector3 EulerAngleVelocityLeft = new Vector3(0, -70);
+    Vector3 EulerAngleVelocityRight = new Vector3(0, 70);
 
     
+
+
 
     public Rigidbody rb;
     // Start is called before the first frame update
@@ -31,42 +37,69 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         CarMovement();
+        Brakes();
+    }
+
+    private void Brakes()
+    {
+       
     }
 
     private void CarMovement()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKey(KeyCode.A))
         {
 
-
-            rb.MovePosition(playerMove.position, forward, 0, 0);
+            Quaternion deltaRotation = Quaternion.Euler(EulerAngleVelocityLeft * Time.fixedDeltaTime);
+            rb.MoveRotation(rb.rotation * deltaRotation);
+            
             
         }
 
        
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
 
-
-            rb.AddForce(10, 0, 0);
+            Quaternion deltaRotation = Quaternion.Euler(EulerAngleVelocityRight * Time.fixedDeltaTime);
+            rb.MoveRotation(rb.rotation * deltaRotation);
 
         }
         
-        if (Input.GetKeyDown(KeyCode.W) & accelCar < maxSpeed)
+        if (Input.GetKey(KeyCode.W))
         {
 
-            rb.AddForce(0, carSpeed, 0);
+            transform.position += transform.forward * carSpeed;
+            if (carSpeed <= maxSpeed)
+            {
+                carSpeed += accelCar * Time.deltaTime;
+            }
+
+
 
 
         }
         
-        if (Input.GetKeyDown(KeyCode.S) & accelCar < maxSpeed)
+        if (Input.GetKey(KeyCode.S))
         {
-            rb.AddForce(0, -10, 0);
-
-
-
+            transform.position += -transform.forward * carSpeed;
+           if(carSpeed <= maxSpeed)
+            {
+                carSpeed += accelCar * Time.deltaTime;
+            }
         }
 
+        else
+        {
+          if(carSpeed > 0)
+            {
+                transform.position += -transform.forward * carSpeed;
+                carSpeed = carSpeed - deAccel * Time.deltaTime;
+            }
+            
+           
+           
+
+        }
+        
     }
 }
