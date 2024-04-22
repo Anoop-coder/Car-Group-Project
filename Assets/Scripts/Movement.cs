@@ -95,6 +95,17 @@ public class Movement : MonoBehaviour
                 transform.position += -transform.forward * carSpeed;
                 carSpeed = carSpeed - deAccel * Time.deltaTime;
             }
+
+          else if(carSpeed < 0)
+            {
+                carSpeed = carSpeed + deAccel * Time.deltaTime;
+            }
+
+            else
+            {
+                carSpeed = 0;
+            }
+            
             
            
            
