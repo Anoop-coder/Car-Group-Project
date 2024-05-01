@@ -20,11 +20,7 @@ public class Movement : MonoBehaviour
     [SerializeField] WheelCollider leftBackWheelCollider;
     [SerializeField] WheelCollider rightBackWheelCollider;
 
-    [SerializeField] Transform leftFrontWheel1;
-    [SerializeField] Transform rightFrontWheel1;
-    [SerializeField] Transform leftBackWheel1;
-    [SerializeField] Transform rightBackWheel1;
-
+   
 
 
 
@@ -61,18 +57,10 @@ public class Movement : MonoBehaviour
     private void CarRotation()
     {
 
-        rotY = Input.GetAxis("Rotation") * rotationSpeed;
-       
-            
-           rightFrontWheelCollider.steerAngle = rotY;
-               
-         
-            leftFrontWheelCollider.steerAngle = rotY;
-
-        rotY = Mathf.Clamp(rotY, -70, 70);
-
-
-
+        rotY = Input.GetAxis("Rotation") * rotationSpeed;                  
+           rightFrontWheelCollider.steerAngle = rotY;              
+           leftFrontWheelCollider.steerAngle = rotY;
+           rotY = Mathf.Clamp(rotY, -70, 70);
 
 
 
