@@ -15,25 +15,31 @@ public class Movement : MonoBehaviour
     [SerializeField] int maxSpeed = 10;
     [SerializeField] float deAccel = 5f;
 
-    [SerializeField] WheelCollider leftFrontWheel;
-    [SerializeField] WheelCollider rightFrontWheel;
-    [SerializeField] WheelCollider leftBackWheel;
-    [SerializeField] WheelCollider rightBackWheel;
+    [SerializeField] WheelCollider leftFrontWheelCollider;
+    [SerializeField] WheelCollider rightFrontWheelCollider;
+    [SerializeField] WheelCollider leftBackWheelCollider;
+    [SerializeField] WheelCollider rightBackWheelCollider;
+
+    [SerializeField] Transform leftFrontWheel1;
+    [SerializeField] Transform rightFrontWheel1;
+    [SerializeField] Transform leftBackWheel1;
+    [SerializeField] Transform rightBackWheel1;
+
 
 
 
     Vector3 playerMove;
     Vector3 EulerAngleVelocityLeft = new Vector3(0, -70, 0);
     Vector3 EulerAngleVelocityRight = new Vector3(0, 70, 0);
-    float maxRotation = 70;
+     float maxRotation = 70;
 
 
     private float rotY;
 
 
-    float rotationSpeed = 45f;
+    [SerializeField] float rotationSpeed = 50f;
 
-    public Rigidbody rb;
+     public Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,31 +54,31 @@ public class Movement : MonoBehaviour
     {
         CarMovement();
         CarRotation();
+
+       
     }
 
     private void CarRotation()
     {
-        if (Input.GetKey(KeyCode.D))
-        {
-            rotY += rotationSpeed * Time.deltaTime;
 
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            rotY -= rotationSpeed * Time.deltaTime;
-
-        }
+        rotY = Input.GetAxis("Rotation") * rotationSpeed;
+       
+            
+           rightFrontWheelCollider.steerAngle = rotY;
+               
+         
+            leftFrontWheelCollider.steerAngle = rotY;
 
         rotY = Mathf.Clamp(rotY, -70, 70);
 
-        leftFrontWheel.steerAngle = rotY;
-        rightFrontWheel.steerAngle = rotY;
-        
-        var rot = transform.localEulerAngles;
-        rot.y = rotY;
-        transform.localEulerAngles = rot;
+
+
+
+
+
     }
+
+    
 
     private void CarMovement()
     {
