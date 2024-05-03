@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] float carSpeed = 0;
     [SerializeField] float accelCar = 500;
+    [SerializeField] float maxSpeed = 150;
    
   
 
@@ -24,8 +25,13 @@ public class Movement : MonoBehaviour
     [SerializeField] WheelCollider leftBackWheelCollider;
     [SerializeField] WheelCollider rightBackWheelCollider;
 
+    [SerializeField] Transform leftFrontWheel;
+    [SerializeField] Transform rightFrontWheel;
+    [SerializeField] Transform leftBackWheel;
+    [SerializeField] Transform rightBackWheel;
 
-    private float rotY;
+
+    [SerializeField] private float rotY;
  
 
     [SerializeField] float rotationSpeed = 50f;
@@ -72,6 +78,7 @@ public class Movement : MonoBehaviour
     {
 
         rotY = Input.GetAxis("Rotation") * rotationSpeed;
+        Mathf.Clamp(rotY, -60, 60);
         rightFrontWheelCollider.steerAngle = rotY;              
         leftFrontWheelCollider.steerAngle = rotY;
           
@@ -92,12 +99,26 @@ public class Movement : MonoBehaviour
         rightFrontWheelCollider.motorTorque = carSpeed;
        
        
-
+        if(carSpeed > 0)
+        {
+            StartCoroutine(addSpeed());
+        }
 
        
         
        
-      
+      IEnumerator addSpeed()
+        {
+           if(carSpeed > 0 && accelCar < maxSpeed)
+            {               
+                accelCar = accelCar + 1;
+                yield return new WaitForSeconds(3);
+                
+            }
+
+            
+            
+        }
 
         
         
