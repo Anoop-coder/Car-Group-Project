@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] float carSpeed = 0;
     [SerializeField] float accelCar = 500;
-    [SerializeField] float maxSpeed = 150;
+    [SerializeField] float maxSpeed = 10;
    
   
 
@@ -41,7 +41,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
+        maxSpeed =  rb.velocity.magnitude;
         
     }
    
@@ -52,8 +52,8 @@ public class Movement : MonoBehaviour
         CarMovement();
         CarRotation();
         CarBreaking();
+        maxSpeed = rb.velocity.magnitude;
 
-       
     }
 
     private void CarBreaking()
@@ -91,36 +91,40 @@ public class Movement : MonoBehaviour
 
     private void CarMovement()
     {
-
-
-       carSpeed = accelCar * Input.GetAxis("Front");
-
-        leftFrontWheelCollider.motorTorque = carSpeed;
-        rightFrontWheelCollider.motorTorque = carSpeed;
        
-       
-        if(carSpeed > 0)
+        
+            carSpeed = accelCar * Input.GetAxis("Front");
+
+            if (7 > maxSpeed)
         {
-            StartCoroutine(addSpeed());
+            leftFrontWheelCollider.motorTorque = carSpeed;
+            rightFrontWheelCollider.motorTorque = carSpeed;
         }
 
-       
-        
-       
-      IEnumerator addSpeed()
+
+        if (maxSpeed >= 7)
         {
-           if(carSpeed > 0 && accelCar < maxSpeed)
-            {               
-                accelCar = accelCar + 1;
-                yield return new WaitForSeconds(3);
-                
-            }
-
-            
-            
+           
         }
-
-        
-        
     }
+
+
+
+               
+        
+
+      
+       
+     
+
+       
+     
+
+            
+            
+        
+
+        
+        
+    
 }
