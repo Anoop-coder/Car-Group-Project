@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] float carSpeed = 0;
     [SerializeField] float accelCar = 500;
-    [SerializeField] float maxSpeed = 10;
+    [SerializeField] float mag;
    
   
 
@@ -41,7 +41,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        maxSpeed =  rb.velocity.magnitude;
+        mag =  rb.velocity.magnitude;
         
     }
    
@@ -52,7 +52,11 @@ public class Movement : MonoBehaviour
         CarMovement();
         CarRotation();
         CarBreaking();
-        maxSpeed = rb.velocity.magnitude;
+        mag = rb.velocity.magnitude;
+        wheelMovement(rightBackWheelCollider, rightBackWheel);
+        wheelMovement(rightFrontWheelCollider, rightFrontWheel);
+        wheelMovement(leftBackWheelCollider, leftBackWheel);
+        wheelMovement(leftFrontWheelCollider, leftFrontWheel);
 
     }
 
@@ -68,19 +72,20 @@ public class Movement : MonoBehaviour
             currentBreakForce = 0;
         }
 
-        leftFrontWheelCollider.brakeTorque = currentBreakForce;
-        rightFrontWheelCollider.brakeTorque = currentBreakForce;
-        leftBackWheelCollider.brakeTorque = currentBreakForce;
-        rightBackWheelCollider.brakeTorque = currentBreakForce;
+
     }
 
     private void CarRotation()
     {
-
-        rotY = Input.GetAxis("Rotation") * rotationSpeed;
-        Mathf.Clamp(rotY, -60, 60);
+        if(mag < 10)
+        {
+            mag = 1.25f;
+        }
+        rotY = Input.GetAxis("Rotation") * rotationSpeed * 1 /mag;
+        
         rightFrontWheelCollider.steerAngle = rotY;              
         leftFrontWheelCollider.steerAngle = rotY;
+       
           
 
 
@@ -95,36 +100,50 @@ public class Movement : MonoBehaviour
         
             carSpeed = accelCar * Input.GetAxis("Front");
 
-            if (7 > maxSpeed)
-        {
+           
+       
             leftFrontWheelCollider.motorTorque = carSpeed;
             rightFrontWheelCollider.motorTorque = carSpeed;
-        }
+        
 
 
-        if (maxSpeed >= 7)
-        {
-           
-        }
+       
+    }
+
+    void wheelMovement(WheelCollider wc, Transform trans)
+
+    {
+
+        //wheel collider  
+        Vector3 position;
+        Quaternion rotation;
+        wc.GetWorldPose(out position, out rotation); //get world space accounting ground, angle, rotation 
+
+        //return wheel transform state 
+        trans.position = position;
+        trans.rotation = rotation;
+
     }
 
 
 
-               
-        
 
-      
-       
-     
 
-       
-     
 
-            
-            
-        
 
-        
-        
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
