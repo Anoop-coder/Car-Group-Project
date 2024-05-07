@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviour
@@ -30,6 +31,9 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform leftBackWheel;
     [SerializeField] Transform rightBackWheel;
 
+    public WheelFrictionCurve wFC;
+    public WheelFrictionCurve frontWFC;
+
 
     [SerializeField] private float rotY;
  
@@ -52,12 +56,52 @@ public class Movement : MonoBehaviour
         CarMovement();
         CarRotation();
         CarBreaking();
+        CarReset();
+        CarDrifting();
         mag = rb.velocity.magnitude;
         wheelMovement(rightBackWheelCollider, rightBackWheel);
         wheelMovement(rightFrontWheelCollider, rightFrontWheel);
         wheelMovement(leftBackWheelCollider, leftBackWheel);
         wheelMovement(leftFrontWheelCollider, leftFrontWheel);
 
+    }
+
+    private void CarDrifting()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            wFC = leftBackWheelCollider.sidewaysFriction;
+            wFC = rightBackWheelCollider.sidewaysFriction;
+            frontWFC = leftFrontWheelCollider.sidewaysFriction;
+            frontWFC = rightFrontWheelCollider.sidewaysFriction;
+            
+            wFC.extremumSlip = 0.5f;
+            frontWFC.extremumSlip = 0.2f;
+          
+
+            rightBackWheelCollider.sidewaysFriction = wFC;
+            leftBackWheelCollider.sidewaysFriction = wFC;
+            rightFrontWheelCollider.sidewaysFriction = frontWFC;
+            leftFrontWheelCollider.sidewaysFriction = frontWFC;
+           
+        }
+
+        else
+        {
+            wFC = leftBackWheelCollider.sidewaysFriction;
+            wFC = rightBackWheelCollider.sidewaysFriction;
+            frontWFC = leftFrontWheelCollider.sidewaysFriction;
+            frontWFC = rightFrontWheelCollider.sidewaysFriction;
+
+            wFC.extremumSlip = 0.1f;
+            frontWFC.extremumSlip = 0.1f;
+            
+            rightBackWheelCollider.sidewaysFriction = wFC;
+            leftBackWheelCollider.sidewaysFriction = wFC;
+            rightFrontWheelCollider.sidewaysFriction = frontWFC;
+            leftFrontWheelCollider.sidewaysFriction = frontWFC;
+
+        }
     }
 
     private void CarBreaking()
@@ -81,7 +125,7 @@ public class Movement : MonoBehaviour
         {
             mag = 1.25f;
         }
-        rotY = Input.GetAxis("Rotation") * rotationSpeed * 1 /mag;
+        rotY = Input.GetAxis("Rotation") * rotationSpeed * 1.5f /mag;
         
         rightFrontWheelCollider.steerAngle = rotY;              
         leftFrontWheelCollider.steerAngle = rotY;
@@ -95,19 +139,11 @@ public class Movement : MonoBehaviour
     
 
     private void CarMovement()
-    {
-       
-        
-            carSpeed = accelCar * Input.GetAxis("Front");
-
-           
+    {         
+            carSpeed = accelCar * Input.GetAxis("Front");           
        
             leftFrontWheelCollider.motorTorque = carSpeed;
-            rightFrontWheelCollider.motorTorque = carSpeed;
-        
-
-
-       
+            rightFrontWheelCollider.motorTorque = carSpeed;               
     }
 
     void wheelMovement(WheelCollider wc, Transform trans)
@@ -126,6 +162,14 @@ public class Movement : MonoBehaviour
     }
 
 
+    void CarReset()
+    {
+        if (Input.GetKey(KeyCode.R))
+        {
+            int currentScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentScene);
+        }
+    }
 
 
 
