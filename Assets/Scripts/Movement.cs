@@ -115,8 +115,8 @@ public class Movement : MonoBehaviour
     {
 
         //wheel collider  
-        Vector3 position;
-        Quaternion rotation;
+        Vector3 position = trans.position;
+        Quaternion rotation = trans.rotation;
         wc.GetWorldPose(out position, out rotation); //get world space accounting ground, angle, rotation 
 
         //return wheel transform state 
