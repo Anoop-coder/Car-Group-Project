@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.36215597, g: 0.15208632, b: 0.18704224, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -304,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f9bfb4291b599934683541b64dd7b0ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 93.04351
+      value: 137.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f9bfb4291b599934683541b64dd7b0ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -372,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f9bfb4291b599934683541b64dd7b0ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 142
+      value: 182.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f9bfb4291b599934683541b64dd7b0ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -887,7 +887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f9bfb4291b599934683541b64dd7b0ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 53.6
+      value: -3.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f9bfb4291b599934683541b64dd7b0ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1364,16 +1364,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1373848928693655168, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1373848928693655168, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: m_SidewaysFriction.m_Stiffness
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1373848928693655168, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumSlip
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1373848928693655168, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: m_SidewaysFriction.m_ExtremumSlip
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2324332412819062733, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324332412819062733, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: m_SidewaysFriction.m_Stiffness
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2324332412819062733, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumSlip
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2324332412819062733, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: m_SidewaysFriction.m_ExtremumSlip
@@ -1381,7 +1397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3513615324348794546, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: breakForce
-      value: 1000000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3513615324348794546, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: rotationSpeed
@@ -1393,7 +1409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159693085071325639, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.977314
+      value: 97.4
       objectReference: {fileID: 0}
     - target: {fileID: 4159693085071325639, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1401,7 +1417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159693085071325639, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.1791034
+      value: 168.3
       objectReference: {fileID: 0}
     - target: {fileID: 4159693085071325639, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1432,8 +1448,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5793323055345895056, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793323055345895056, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: m_SidewaysFriction.m_Stiffness
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793323055345895056, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumSlip
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5793323055345895056, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: m_SidewaysFriction.m_ExtremumSlip
@@ -1456,8 +1480,16 @@ PrefabInstance:
       value: 5.893239
       objectReference: {fileID: 0}
     - target: {fileID: 8298059972346547227, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
+      propertyPath: m_ForwardFriction.m_Stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298059972346547227, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: m_SidewaysFriction.m_Stiffness
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298059972346547227, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
+      propertyPath: m_ForwardFriction.m_ExtremumSlip
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8298059972346547227, guid: 3f2d4bc0bdf4e604aaec8efe4779f356, type: 3}
       propertyPath: m_SidewaysFriction.m_ExtremumSlip
@@ -1949,8 +1981,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533411469}
-  m_LocalRotation: {x: 0.09576309, y: 0.23448281, z: -0.023218373, w: 0.9671133}
-  m_LocalPosition: {x: 7.9761667, y: -2.99, z: 0.07234573}
+  m_LocalRotation: {x: 0.09576314, y: 0.23448305, z: -0.023218412, w: 0.96711326}
+  m_LocalPosition: {x: 93.39886, y: -2.99, z: 169.55145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2333,8 +2365,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758335170}
-  m_LocalRotation: {x: 0.09576309, y: 0.23448281, z: -0.023218373, w: 0.9671133}
-  m_LocalPosition: {x: 7.9761667, y: -2.99, z: 0.07234573}
+  m_LocalRotation: {x: 0.09576314, y: 0.23448305, z: -0.023218412, w: 0.96711326}
+  m_LocalPosition: {x: 93.39886, y: -2.99, z: 169.55145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
