@@ -84,7 +84,7 @@ public class Movement : MonoBehaviour
             wFC.extremumSlip = 0.5f;
             wFC.stiffness = 0.8f;
            
-            frontWFC.extremumSlip = 0.2f;           
+            frontWFC.extremumSlip = 0.23f;           
             frontWFC.stiffness = 0.8f;
           
 
