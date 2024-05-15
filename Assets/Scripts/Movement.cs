@@ -11,8 +11,9 @@ public class Movement : MonoBehaviour
     //Created by Jayden, dont edit it
     
 
-    [SerializeField] float carSpeed = 0;
-    [SerializeField] float accelCar = 500;
+    [SerializeField] float carSpeed = 0f;
+    [SerializeField] float accelCar = 500f;
+    [SerializeField] float maxSpeed = 15f;
     [SerializeField] float mag;
    
   
@@ -162,7 +163,11 @@ public class Movement : MonoBehaviour
 
     private void CarMovement()
     {         
-            carSpeed = accelCar * Input.GetAxis("Front");           
+        if(mag >= maxSpeed)
+        {
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+        }
+        carSpeed = accelCar * Input.GetAxis("Front");           
        
             leftFrontWheelCollider.motorTorque = carSpeed;
             rightFrontWheelCollider.motorTorque = carSpeed;               
