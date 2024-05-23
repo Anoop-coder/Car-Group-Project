@@ -167,6 +167,7 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.CompareTag("Barrier"))
         {
             AudioSource.PlayClipAtPoint(bangAudio, Camera.main.transform.position);
+            AudioSource.PlayClipAtPoint(bangAudio, Camera.main.transform.position);
         }
     }
 
