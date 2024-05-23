@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
     [SerializeField] public float currentBreakForce = 0f;
     [SerializeField] public float breakForce = 300f;
 
-
+    
     [SerializeField] WheelCollider leftFrontWheelCollider;
     [SerializeField] WheelCollider rightFrontWheelCollider;
     [SerializeField] WheelCollider leftBackWheelCollider;
@@ -44,6 +44,9 @@ public class Movement : MonoBehaviour
     [SerializeField] float rotationSpeed = 50f;
 
      public Rigidbody rb;
+
+
+    public AudioClip bangAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -159,8 +162,15 @@ public class Movement : MonoBehaviour
 
     }
 
-    
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            AudioSource.PlayClipAtPoint(bangAudio, Camera.main.transform.position);
+        }
+    }
 
+ 
     private void CarMovement()
     {         
         if(mag >= maxSpeed)
