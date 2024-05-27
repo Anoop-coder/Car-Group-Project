@@ -862,6 +862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carSpeed: 0
   accelCar: 550
+  maxSpeed: 15
   mag: 0
   currentBreakForce: 0
   breakForce: 300
@@ -876,6 +877,7 @@ MonoBehaviour:
   rotY: 0
   rotationSpeed: 50
   rb: {fileID: 7540029190980808862}
+  bangAudio: {fileID: 8300000, guid: 52d40187ce299cc42bdced7fb1c6fe30, type: 3}
 --- !u!65 &7587861642652453044
 BoxCollider:
   m_ObjectHideFlags: 0

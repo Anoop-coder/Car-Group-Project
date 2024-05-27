@@ -35,8 +35,9 @@ public class Movement : MonoBehaviour
     public WheelFrictionCurve wFC;
     public WheelFrictionCurve frontWFC;
     public WheelFrictionCurve backwheelFrition;
-        
 
+    AudioSource carSource;
+    public AudioClip carEngine;
 
     [SerializeField] private float rotY;
  
@@ -51,6 +52,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        carSource = GetComponent<AudioSource>();
         mag =  rb.velocity.magnitude;
         
     }
@@ -69,6 +71,8 @@ public class Movement : MonoBehaviour
         wheelMovement(rightFrontWheelCollider, rightFrontWheel);
         wheelMovement(leftBackWheelCollider, leftBackWheel);
         wheelMovement(leftFrontWheelCollider, leftFrontWheel);
+       
+       
 
     }
 
@@ -135,13 +139,19 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             currentBreakForce = breakForce;
+            
         }
 
         else
         {
             currentBreakForce = 0;
+           
         }
 
+        leftBackWheelCollider.brakeTorque = currentBreakForce;
+        leftFrontWheelCollider.brakeTorque = currentBreakForce;
+        rightBackWheelCollider.brakeTorque = currentBreakForce;
+        rightFrontWheelCollider.brakeTorque = currentBreakForce;
 
     }
 
@@ -178,10 +188,24 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         }
-        carSpeed = accelCar * Input.GetAxis("Front");           
+        carSpeed = accelCar * Input.GetAxis("Front");  
+       
+        
        
             leftFrontWheelCollider.motorTorque = carSpeed;
-            rightFrontWheelCollider.motorTorque = carSpeed;               
+            rightFrontWheelCollider.motorTorque = carSpeed; 
+        
+        if(mag > 1)
+        {
+            carSource.enabled = true;
+            carSource.PlayOneShot(carEngine);
+        }
+      
+
+        else
+        {
+            carSource.enabled = false;
+        }
     }
 
     void wheelMovement(WheelCollider wc, Transform trans)
