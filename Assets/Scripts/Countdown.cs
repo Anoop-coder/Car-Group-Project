@@ -5,36 +5,53 @@ using UnityEngine;
 
 public class Countdown : MonoBehaviour
 {
-    public Behaviour gameObject;
+    Movement movement;
     [SerializeField] TMP_Text timeText;
+    [SerializeField] GameObject goText;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip timeClip;
-    float timeCount = 3f;
+    float timeCount = 4f;
     float timeSubtract = 1f;
     // Start is called before the first frame update
     void Start()
     {
-       gameObject =  GetComponent<Behaviour>();
+        movement =  FindObjectOfType<Movement>();
         audioSource.PlayOneShot(timeClip);
         StartCoroutine(Time());
-        gameObject.enabled = false;
+        
+        movement.enabled = false;
+        goText.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         timeText.text = timeCount.ToString();
+        StartCoroutine(Go());
     }
 
-    IEnumerator Time()
+    IEnumerator Go()
     {
-        
-        timeCount = timeCount - timeSubtract;
-        yield return new WaitForSeconds(1);
-        
         if(timeCount == 0)
         {
-            gameObject.enabled = true;
+            goText.SetActive(true);
+            yield return new WaitForSeconds(1);
+            goText.SetActive(false);
+        }
+    }
+    IEnumerator Time()
+    {
+       
+        timeCount = timeCount - timeSubtract;
+        timeText.text = timeCount.ToString();
+        yield return new WaitForSeconds(1);
+        
+        if(timeCount == 1)
+        {
+            
+            timeText.enabled = false;
+            movement.enabled = true;
 
         }
         StartCoroutine(Time());
