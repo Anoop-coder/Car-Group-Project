@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Anoop/Scenes/Anoop Scene.unity
     guid: 1b1d056ad9bd62848b938e554a282dce
+  - enabled: 1
+    path: Assets/Anoop/Vertical Slice 1.unity
+    guid: af548f54e4ceec44891212758a8da740
+  - enabled: 1
+    path: Assets/Anoop/Scenes/Shop2.unity
+    guid: a84fe389d1b243646be626cea3fc59b3
+  - enabled: 1
+    path: Assets/Anoop/Scenes/Shop.unity
+    guid: 466fdb9daceb0ac42b7e223a7fa168e2
   m_configObjects: {}

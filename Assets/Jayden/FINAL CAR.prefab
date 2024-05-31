@@ -801,7 +801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4159693085071325639
 Transform:
   m_ObjectHideFlags: 0
@@ -874,6 +874,7 @@ MonoBehaviour:
   rightFrontWheel: {fileID: 7747758383269726867}
   leftBackWheel: {fileID: 8262189490852236871}
   rightBackWheel: {fileID: 7705642274180123177}
+  carEngine: {fileID: 0}
   rotY: 0
   rotationSpeed: 50
   rb: {fileID: 7540029190980808862}

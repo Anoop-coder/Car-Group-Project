@@ -9,4 +9,23 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void LoadVerticalSliceScene()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void LoadShop2Scene()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void LoadShopScene()
+    {
+        SceneManager.LoadScene(4);
+    }
+    public void LoadStartScene()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
