@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Barrier
   - Accord
+  - SubtractMoney
+  - Npc
   layers:
   - Default
   - TransparentFX
