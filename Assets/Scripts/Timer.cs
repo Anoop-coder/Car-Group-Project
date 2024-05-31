@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     IEnumerator Stopwatch()
     {
         yield return new WaitForSeconds(3);
-        time += Time.deltaTime;
+        time += Time.fixedDeltaTime;
         
         timerText.text = time.ToString("F2");
     }

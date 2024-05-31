@@ -9,19 +9,16 @@ public class Cash : MonoBehaviour
     [SerializeField] int carHitSubtract = 100;
     [SerializeField] int carSecondPlace = 2000;
 
-    public GameObject[] npcCar;
-    public List<GameObject> npcCarList;
 
+    [SerializeField] public bool secondPlace = false;
 
-    private void Awake()
+    private void Update()
     {
-        npcCar = GameObject.FindGameObjectsWithTag("Npc");
-        List<GameObject> npcCarList = new List<GameObject> ();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
+        if(secondPlace == true)
+        {
+            cashGet = cashGet - carSecondPlace;
+            return;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,6 +27,8 @@ public class Cash : MonoBehaviour
         {
             cashGet = cashGet - carHitSubtract;
         }
+
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,5 +37,9 @@ public class Cash : MonoBehaviour
         {
             currentMoney = currentMoney + cashGet;
         }
+
+      
     }
+
+   
 }
