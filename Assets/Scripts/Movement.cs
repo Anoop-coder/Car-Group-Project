@@ -15,8 +15,8 @@ public class Movement : MonoBehaviour
     [SerializeField] float accelCar = 500f;
     [SerializeField] float maxSpeed = 15f;
     [SerializeField] float mag;
-   
-  
+
+    [SerializeField] int waitTime = 2;
 
     [SerializeField] public float currentBreakForce = 0f;
     [SerializeField] public float breakForce = 300f;
@@ -235,9 +235,20 @@ public class Movement : MonoBehaviour
 
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Finish")
+        {
+            StartCoroutine(TransferScene());
+        }
+    }
 
-
-
+    IEnumerator TransferScene()
+    {
+        yield return new WaitForSeconds(waitTime);
+        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextScene);
+    }
 
 
 
