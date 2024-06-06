@@ -4,21 +4,33 @@ using UnityEngine;
 
 public class AIFINISH : MonoBehaviour
 {
-   
-    public Collider aICollider;
+    [SerializeField] public bool secondPlace = false;
+    [SerializeField] public bool playerFinish = false;
+
+
     Cash cash;
 
-    private void Start()
+    public void Start()
     {
         cash = FindObjectOfType<Cash>();
+        
     }
     
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Npc")
+        if(other.gameObject.tag == "Npc")
         {
-            cash.secondPlace = true;
-            
+            secondPlace = true;
         }
+
+        if(other.gameObject.tag == "Player")
+        {                     
+            
+            playerFinish = true;
+            cash.currentMoney += cash.cashGet;
+        }
+        
+        
+        
     }
 }
