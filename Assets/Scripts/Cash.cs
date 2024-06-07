@@ -8,7 +8,7 @@ public class Cash : MonoBehaviour
     AIFINISH aIFINISH;
 
     [SerializeField] TextMeshProUGUI cashText;
-    [SerializeField] public int currentMoney = 0;
+    [SerializeField] public static int currentMoney = 0;
     [SerializeField] public int cashGet = 0;
     [SerializeField] public int carHitSubtract = 100;
     [SerializeField] public int car1Place = 10000;
@@ -35,15 +35,17 @@ public class Cash : MonoBehaviour
 
     public void racePlace()
     {
-        if(aIFINISH.playerFinish == true & aIFINISH.secondPlace == true & alreadyGetSecond == false)
+        if(aIFINISH.playerFinish == true & aIFINISH.secondPlace == true & alreadyGetSecond == false & alreadyGetFirst == false)
         {                     
-                cashGet += car2Place;
-                alreadyGetSecond = true;                   
+            cashGet += car2Place;
+            currentMoney += cashGet;
+            alreadyGetSecond = true;                   
         }
 
-        if (aIFINISH.playerFinish == true & aIFINISH.secondPlace == false & alreadyGetFirst == false)
+        if (aIFINISH.playerFinish == true & aIFINISH.secondPlace == false & alreadyGetFirst == false & alreadyGetSecond == false)
         {
             cashGet += car1Place;
+            currentMoney += cashGet;
             alreadyGetFirst = true;
         }
        
