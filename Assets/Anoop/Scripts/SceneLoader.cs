@@ -17,7 +17,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadShop2Scene()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(5);
     }
 
     public void LoadShopScene()
@@ -27,5 +27,9 @@ public class SceneLoader : MonoBehaviour
     public void LoadStartScene()
     {
         SceneManager.LoadScene(0);
+    }
+    public void LoadShop3Scene()
+    {
+        SceneManager.LoadScene(6);
     }
 }

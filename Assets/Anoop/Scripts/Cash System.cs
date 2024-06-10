@@ -22,4 +22,7 @@ public class CashSystem : MonoBehaviour
         
         Debug.Log("AddedMoney");
    }
+
+
+    
 }
