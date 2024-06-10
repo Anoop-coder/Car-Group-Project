@@ -242,23 +242,7 @@ public class Movement : MonoBehaviour
 
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Finish")
-        {
-            
-            StartCoroutine(TransferScene());
-
-        }
-    }
-
-    IEnumerator TransferScene()
-    {
-        yield return new WaitForSeconds(waitTime);
-        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextScene);
-    }
-
+   
 
 
 

@@ -5,24 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void LoadAnoopScene()
-    {
-        SceneManager.LoadScene(1);
-    }
+    
 
-    public void LoadVerticalSliceScene()
-    {
-        SceneManager.LoadScene(2);
-    }
+   
 
     public void LoadShop2Scene()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene("Shop 2");
     }
 
     public void LoadShopScene()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("Shop");
     }
     public void LoadStartScene()
     {
@@ -30,6 +24,6 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadShop3Scene()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene("Shop 3");
     }
 }

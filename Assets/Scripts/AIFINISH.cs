@@ -24,10 +24,8 @@ public class AIFINISH : MonoBehaviour
         }
 
         if(other.gameObject.tag == "Player")
-        {
-            
-            playerFinish = true;
-            
+        {            
+            playerFinish = true;            
         }
         
         

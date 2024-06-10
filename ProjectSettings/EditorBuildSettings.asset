@@ -4,5 +4,29 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Anoop/Scenes/Start Scene.unity
+    guid: 51396611112f47f49afe06c74bdf184f
+  - enabled: 1
+    path: Assets/Anoop/Level 1.unity
+    guid: af548f54e4ceec44891212758a8da740
+  - enabled: 1
+    path: Assets/Anoop/Cutscene 1.unity
+    guid: 4cc03b128e800694bafe29e11369e63a
+  - enabled: 1
+    path: Assets/Anoop/Scenes/Lose Scene.unity
+    guid: e2779a88a03ee984ba69bc8f1497ec69
+  - enabled: 1
+    path: Assets/Anoop/Level 2.unity
+    guid: d7e9958e3c2749d44b1374b4d4e9b23d
+  - enabled: 1
+    path: Assets/Anoop/Scenes/Shop.unity
+    guid: 5e7ab0f001fb06f4b8b0a2faaa905739
+  - enabled: 1
+    path: Assets/Anoop/Scenes/Shop 2.unity
+    guid: fdb2d7102f7b8ca49ade67b2eb3c8938
+  - enabled: 1
+    path: Assets/Anoop/Scenes/Shop 3.unity
+    guid: d6420e470bdb0ea4985914a8a8d98597
   m_configObjects: {}

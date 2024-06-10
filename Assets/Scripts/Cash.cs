@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cash : MonoBehaviour
 {
@@ -11,8 +12,9 @@ public class Cash : MonoBehaviour
     [SerializeField] public static int currentMoney = 0;
     [SerializeField] public int cashGet = 0;
     [SerializeField] public int carHitSubtract = 100;
-    [SerializeField] public int car1Place = 10000;
-    [SerializeField] public int car2Place = 8000;
+    [SerializeField] public int car1Place = 25000;
+    [SerializeField] public int car2Place = 20000;
+    int waitTime = 2;
 
 
 
@@ -39,7 +41,9 @@ public class Cash : MonoBehaviour
         {                     
             cashGet += car2Place;
             currentMoney += cashGet;
-            alreadyGetSecond = true;                   
+            alreadyGetSecond = true;
+            StartCoroutine(Lose());
+            
         }
 
         if (aIFINISH.playerFinish == true & aIFINISH.secondPlace == false & alreadyGetFirst == false & alreadyGetSecond == false)
@@ -47,6 +51,25 @@ public class Cash : MonoBehaviour
             cashGet += car1Place;
             currentMoney += cashGet;
             alreadyGetFirst = true;
+            StartCoroutine(Cutscene());
+        }
+
+        IEnumerator Lose()
+        {
+            
+            yield return new WaitForSeconds(waitTime);
+            SceneManager.LoadScene("Lose Scene");
+        }
+
+        IEnumerator Cutscene()
+        {
+            int currentScene = SceneManager.GetActiveScene().buildIndex;
+            if(currentScene < 4)
+            {
+                yield return new WaitForSeconds(waitTime);
+                SceneManager.LoadScene("Cutscene 1");
+            }
+           
         }
        
     }
