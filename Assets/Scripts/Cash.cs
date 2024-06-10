@@ -1,45 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Cash : MonoBehaviour
 {
-    [SerializeField] int currentMoney = 0;
-    [SerializeField] int cashGet = 10000;
-    [SerializeField] int carHitSubtract = 100;
-    [SerializeField] int carSecondPlace = 2000;
+    AIFINISH aIFINISH;
+
+    [SerializeField] TextMeshProUGUI cashText;
+    [SerializeField] public static int currentMoney = 0;
+    [SerializeField] public int cashGet = 0;
+    [SerializeField] public int carHitSubtract = 100;
+    [SerializeField] public int car1Place = 10000;
+    [SerializeField] public int car2Place = 8000;
 
 
-    [SerializeField] public bool secondPlace = false;
 
-    private void Update()
+
+    [SerializeField] public bool alreadyGetFirst = false;
+    [SerializeField] public bool alreadyGetSecond = false;
+
+
+
+    public void Start()
     {
-        if(secondPlace == true)
-        {
-            cashGet = cashGet - carSecondPlace;
-            return;
-        }
+        aIFINISH = FindObjectOfType<AIFINISH>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Update()
     {
-        if (collision.gameObject.tag == "SubtractMoney")
-        {
-            cashGet = cashGet - carHitSubtract;
-        }
-
-        
+        cashText.text = currentMoney.ToString();
+        racePlace();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void racePlace()
     {
-        if (other.gameObject.tag == "Finish")
-        {
-            currentMoney = currentMoney + cashGet;
+        if(aIFINISH.playerFinish == true & aIFINISH.secondPlace == true & alreadyGetSecond == false & alreadyGetFirst == false)
+        {                     
+            cashGet += car2Place;
+            currentMoney += cashGet;
+            alreadyGetSecond = true;                   
         }
 
-      
+        if (aIFINISH.playerFinish == true & aIFINISH.secondPlace == false & alreadyGetFirst == false & alreadyGetSecond == false)
+        {
+            cashGet += car1Place;
+            currentMoney += cashGet;
+            alreadyGetFirst = true;
+        }
+       
     }
-
-   
+       
 }

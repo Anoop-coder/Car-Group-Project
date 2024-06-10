@@ -9,7 +9,8 @@ using UnityEngine.UIElements;
 public class Movement : MonoBehaviour
 {
     //Created by Jayden, dont edit it
-    
+
+    Cash cash;
 
     [SerializeField] float carSpeed = 0f;
     [SerializeField] float accelCar = 500f;
@@ -53,6 +54,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         carSource = GetComponent<AudioSource>();
+        cash = FindAnyObjectByType<Cash>();
         mag =  rb.velocity.magnitude;
         
     }
@@ -179,6 +181,11 @@ public class Movement : MonoBehaviour
             AudioSource.PlayClipAtPoint(bangAudio, Camera.main.transform.position);
             AudioSource.PlayClipAtPoint(bangAudio, Camera.main.transform.position);
         }
+
+        if (collision.gameObject.CompareTag("SubtractMoney"))
+        {
+            cash.cashGet = cash.cashGet - cash.carHitSubtract;
+        }
     }
 
  
@@ -239,7 +246,9 @@ public class Movement : MonoBehaviour
     {
         if(other.gameObject.tag == "Finish")
         {
+            
             StartCoroutine(TransferScene());
+
         }
     }
 
