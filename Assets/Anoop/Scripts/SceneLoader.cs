@@ -26,4 +26,9 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Shop 3");
     }
+
+    public void Level1()
+    {
+        SceneManager.LoadScene("Level 1");
+    }
 }

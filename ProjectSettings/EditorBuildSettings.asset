@@ -9,16 +9,16 @@ EditorBuildSettings:
     path: Assets/Anoop/Scenes/Start Scene.unity
     guid: 51396611112f47f49afe06c74bdf184f
   - enabled: 1
-    path: Assets/Anoop/Level 1.unity
+    path: Assets/Anoop/Scenes/Level 1.unity
     guid: af548f54e4ceec44891212758a8da740
   - enabled: 1
-    path: Assets/Anoop/Cutscene 1.unity
+    path: Assets/Anoop/Scenes/Cutscene 1.unity
     guid: 4cc03b128e800694bafe29e11369e63a
   - enabled: 1
     path: Assets/Anoop/Scenes/Lose Scene.unity
     guid: e2779a88a03ee984ba69bc8f1497ec69
   - enabled: 1
-    path: Assets/Anoop/Level 2.unity
+    path: Assets/Anoop/Scenes/Level 2.unity
     guid: d7e9958e3c2749d44b1374b4d4e9b23d
   - enabled: 1
     path: Assets/Anoop/Scenes/Shop.unity

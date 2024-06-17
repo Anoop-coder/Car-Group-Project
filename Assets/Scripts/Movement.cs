@@ -163,7 +163,7 @@ public class Movement : MonoBehaviour
         {
             mag = 1.25f;
         }
-        rotY = Input.GetAxis("Rotation") * rotationSpeed * 1.5f /mag;
+        rotY = Input.GetAxis("Rotation") * rotationSpeed * 2f /mag;
         
         rightFrontWheelCollider.steerAngle = rotY;              
         leftFrontWheelCollider.steerAngle = rotY;

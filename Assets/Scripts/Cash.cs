@@ -12,8 +12,8 @@ public class Cash : MonoBehaviour
     [SerializeField] public static int currentMoney = 0;
     [SerializeField] public int cashGet = 0;
     [SerializeField] public int carHitSubtract = 100;
-    [SerializeField] public int car1Place = 25000;
-    [SerializeField] public int car2Place = 20000;
+    [SerializeField] public int car1Place = 27500;
+    [SerializeField] public int car2Place = 17500;
     int waitTime = 2;
 
 

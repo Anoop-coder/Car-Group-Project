@@ -8,6 +8,7 @@ TagManager:
   - Accord
   - SubtractMoney
   - Npc
+  - NPC
   layers:
   - Default
   - TransparentFX
