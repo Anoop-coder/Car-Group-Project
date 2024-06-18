@@ -88,9 +88,110 @@ public class Movement : MonoBehaviour
     private void CarDrifting()
     {
         if (Input.GetKey(KeyCode.LeftShift))
+
         {
-            speed = rb.velocity.magnitude;
-            driftAngle = Vector3.Angle(rb.transform.forward, (rb.velocity + rb.transform.forward).normalized);
+
+            wFC = leftBackWheelCollider.sidewaysFriction;
+
+            wFC = rightBackWheelCollider.sidewaysFriction;
+
+            frontWFC = leftFrontWheelCollider.sidewaysFriction;
+
+            frontWFC = rightFrontWheelCollider.sidewaysFriction;
+
+            backwheelFrition = rightBackWheelCollider.forwardFriction;
+
+            backwheelFrition = leftBackWheelCollider.forwardFriction;
+
+
+
+
+
+            backwheelFrition.stiffness = 0.6f;
+
+            wFC.extremumSlip = 0.5f;
+
+            wFC.stiffness = 0.8f;
+
+
+
+            frontWFC.extremumSlip = 0.23f;
+
+            frontWFC.stiffness = 0.8f;
+
+
+
+
+
+            rightBackWheelCollider.sidewaysFriction = wFC;
+
+            leftBackWheelCollider.sidewaysFriction = wFC;
+
+            rightBackWheelCollider.forwardFriction = backwheelFrition;
+
+            leftBackWheelCollider.forwardFriction = backwheelFrition;
+
+
+
+            rightFrontWheelCollider.sidewaysFriction = frontWFC;
+
+            leftFrontWheelCollider.sidewaysFriction = frontWFC;
+
+
+
+        }
+
+
+
+        else
+
+        {
+
+            wFC = leftBackWheelCollider.sidewaysFriction;
+
+            wFC = rightBackWheelCollider.sidewaysFriction;
+
+            frontWFC = leftFrontWheelCollider.sidewaysFriction;
+
+            frontWFC = rightFrontWheelCollider.sidewaysFriction;
+
+            backwheelFrition = rightBackWheelCollider.forwardFriction;
+
+            backwheelFrition = leftBackWheelCollider.forwardFriction;
+
+
+
+            wFC.extremumSlip = 0.1f;
+
+            wFC.stiffness = 1.5f;
+
+            backwheelFrition.stiffness = 1f;
+
+
+
+
+
+            frontWFC.extremumSlip = 0.1f;
+
+            frontWFC.stiffness = 1.5f;
+
+
+
+            rightBackWheelCollider.sidewaysFriction = wFC;
+
+            leftBackWheelCollider.sidewaysFriction = wFC;
+
+            rightBackWheelCollider.forwardFriction = backwheelFrition;
+
+            leftBackWheelCollider.forwardFriction = backwheelFrition;
+
+
+
+            rightFrontWheelCollider.sidewaysFriction = frontWFC;
+
+            leftFrontWheelCollider.sidewaysFriction = frontWFC;
+
+
 
         }
 

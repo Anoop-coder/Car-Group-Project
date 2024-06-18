@@ -191,6 +191,97 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &46101209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 46101211}
+  - component: {fileID: 46101210}
+  m_Layer: 0
+  m_Name: SceneLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &46101210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46101209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3248962f9d03a7744be9d6c7b4c091a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &46101211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46101209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 359.46112, y: 120.15839, z: 207.80634}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &79045944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 79045946}
+  - component: {fileID: 79045945}
+  m_Layer: 0
+  m_Name: Dialogue Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &79045945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79045944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91120631d4c6d654ba085819d4ca822e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 976132727}
+  dialogueText: {fileID: 976132726}
+  animator: {fileID: 976132728}
+--- !u!4 &79045946
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79045944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 359.46112, y: 120.15839, z: 207.80634}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &108716439
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,22 +804,41 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3210286237195443879, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
+      propertyPath: dialogue.name
+      value: Hellcat
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210286237195443879, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210286237195443879, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Good race to you.
+      value: How did you beat me? Anyways that doesnt matter. You got the best car
+        now, go to the shop and buy the kioneggseg.
       objectReference: {fileID: 0}
     - target: {fileID: 3210286237195443879, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: 'You beat me..... somehow
-
-'
+      value: 'Enjoy the time you have with that car, you might not have it for long. '
       objectReference: {fileID: 0}
     - target: {fileID: 3210286237195443879, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
       propertyPath: dialogue.sentences.Array.data[2]
-      value: 
+      value: Good job racer, you climbed the ranks and became the best racer in Vancouver.
       objectReference: {fileID: 0}
     - target: {fileID: 3210286237195443879, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
       propertyPath: dialogue.sentences.Array.data[3]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603192238699418572, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 79045945}
+    - target: {fileID: 3603192238699418572, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayNextSentence
+      objectReference: {fileID: 0}
+    - target: {fileID: 3603192238699418572, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DialogueManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8779978889112575916, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
       propertyPath: m_Pivot.x
@@ -814,14 +924,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8929018363604795078, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 46101210}
+    - target: {fileID: 8929018363604795078, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadShopScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3032458122090817630, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1221007007}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
+--- !u!114 &976132726 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7872861982737203866, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
+  m_PrefabInstance: {fileID: 976132725}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &976132727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4074984901223789724, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
+  m_PrefabInstance: {fileID: 976132725}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &976132728 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3173239606035546190, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
+  m_PrefabInstance: {fileID: 976132725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &989343930 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7978202778848734214, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
@@ -1085,24 +1227,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e253e5caf701fd84d84f850bc071621a, type: 3}
---- !u!1 &1221007002 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3032458122090817630, guid: b743f8900b2ddcd4d920197ad106930e, type: 3}
-  m_PrefabInstance: {fileID: 976132725}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1221007007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221007002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb3ae7a7933224147b686dc8b5b452e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueCanvas: {fileID: 1221007002}
 --- !u!1001 &1249790225
 PrefabInstance:
   m_ObjectHideFlags: 0
