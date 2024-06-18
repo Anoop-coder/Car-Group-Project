@@ -9,7 +9,7 @@ public class Cash : MonoBehaviour
     AIFINISH aIFINISH;
 
     [SerializeField] TextMeshProUGUI cashText;
-    [SerializeField] public static int currentMoney = 0;
+  
     [SerializeField] public int cashGet = 0;
     [SerializeField] public int carHitSubtract = 100;
     [SerializeField] public int car1Place = 27500;
@@ -31,32 +31,34 @@ public class Cash : MonoBehaviour
 
     public void Update()
     {
-        cashText.text = currentMoney.ToString();
+        cashText.text = SaveManager.instance.money.ToString();
         racePlace();
     }
 
     public void racePlace()
     {
-        if(aIFINISH.playerFinish == true & aIFINISH.secondPlace == true & alreadyGetSecond == false & alreadyGetFirst == false)
-        {                     
+        if (aIFINISH.playerFinish == true & aIFINISH.secondPlace == true & alreadyGetSecond == false & alreadyGetFirst == false)
+        {
             cashGet += car2Place;
-            currentMoney += cashGet;
+            SaveManager.instance.money += cashGet;
+            SaveManager.instance.Save();
             alreadyGetSecond = true;
             StartCoroutine(Lose());
-            
+
         }
 
         if (aIFINISH.playerFinish == true & aIFINISH.secondPlace == false & alreadyGetFirst == false & alreadyGetSecond == false)
         {
             cashGet += car1Place;
-            currentMoney += cashGet;
+            SaveManager.instance.money += cashGet;
+            SaveManager.instance.Save();
             alreadyGetFirst = true;
             StartCoroutine(Cutscene());
         }
 
         IEnumerator Lose()
         {
-            
+
             yield return new WaitForSeconds(waitTime);
             SceneManager.LoadScene("Lose Scene");
         }
@@ -64,14 +66,14 @@ public class Cash : MonoBehaviour
         IEnumerator Cutscene()
         {
             int currentScene = SceneManager.GetActiveScene().buildIndex;
-            if(currentScene < 4)
+            if (currentScene < 4)
             {
                 yield return new WaitForSeconds(waitTime);
                 SceneManager.LoadScene("Cutscene 1");
             }
-           
+
         }
-       
+
     }
-       
+
 }

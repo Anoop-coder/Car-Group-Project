@@ -1523,11 +1523,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d856c8f152586474d9961858daa1ccb9, type: 3}
---- !u!4 &1392108556 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8407097260833072125, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-  m_PrefabInstance: {fileID: 5731649962683712663}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1490845346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,7 +1713,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533411469}
-  m_LocalRotation: {x: 0.098537624, y: 0.000000016223131, z: -0.0000000016064068, w: 0.99513334}
+  m_LocalRotation: {x: 0.0985376, y: -0.000000020690734, z: 0.000000002048786, w: 0.99513334}
   m_LocalPosition: {x: 9.389999, y: -1.1999998, z: 2.8400002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2168,8 +2163,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1392108556}
-  m_Follow: {fileID: 1392108556}
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60.000004
     OrthographicSize: 10
@@ -2196,7 +2191,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758335170}
-  m_LocalRotation: {x: 0.098537624, y: 0.000000016223131, z: -0.0000000016064068, w: 0.99513334}
+  m_LocalRotation: {x: 0.0985376, y: -0.000000020690734, z: 0.000000002048786, w: 0.99513334}
   m_LocalPosition: {x: 9.389999, y: -1.1999998, z: 2.8400002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2665,64 +2660,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: cc96bf50c41f42a4695d0288341706d2, type: 3}
---- !u!1001 &5731649962683712663
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7346379814189692604, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-      propertyPath: m_RootOrder
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7346379814189692604, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 14.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 7346379814189692604, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 7346379814189692604, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7346379814189692604, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7346379814189692604, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7346379814189692604, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7346379814189692604, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7346379814189692604, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7346379814189692604, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7346379814189692604, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978202778848734214, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}
-      propertyPath: m_Name
-      value: lvl2car Optimaized 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0d290e64c4a1ce74c80169bab8842c82, type: 3}

@@ -5,26 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    
 
-   
+    public void LoadShopScene()
+    {
+        SceneManager.LoadScene("Shop");
+    }
+
 
     public void LoadShop2Scene()
     {
         SceneManager.LoadScene("Shop 2");
     }
 
-    public void LoadShopScene()
+    public void LoadLevelSelectScene()
     {
-        SceneManager.LoadScene("Shop");
+        SceneManager.LoadScene("Level Select");
     }
-    public void LoadStartScene()
+    public void LoadLevelSelectChargerScene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Level Select charger");
     }
-    public void LoadShop3Scene()
+    public void LoadShopLevelSelectkoinsScene()
     {
-        SceneManager.LoadScene("Shop 3");
+        SceneManager.LoadScene("Level Select koins");
     }
 
     public void Level1()

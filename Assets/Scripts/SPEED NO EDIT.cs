@@ -6,7 +6,8 @@ using TMPro;
 
 public class SPEEDNOEDIT : MonoBehaviour
 {
-
+   
+   
     public Rigidbody target;
 
 
@@ -22,7 +23,16 @@ public class SPEEDNOEDIT : MonoBehaviour
 
     private float speed = 0.0f;
 
+    
+
     private void Update()
+    {
+
+        Speedometer();
+       
+    }
+
+    void Speedometer()
     {
         speed = target.velocity.magnitude * 3.6f;
 

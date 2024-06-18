@@ -22,6 +22,13 @@ public class Movement : MonoBehaviour
     [SerializeField] public float currentBreakForce = 0f;
     [SerializeField] public float breakForce = 300f;
 
+    float driftAngle = 0f;
+    float driftFactor = 0f;
+    float speed = 0f;
+    public float minSpeed = 5f;
+    public float minAngle = 10f;
+    bool isDrifting = false;
+
     
     [SerializeField] WheelCollider leftFrontWheelCollider;
     [SerializeField] WheelCollider rightFrontWheelCollider;
@@ -82,59 +89,17 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            wFC = leftBackWheelCollider.sidewaysFriction;
-            wFC = rightBackWheelCollider.sidewaysFriction;
-            frontWFC = leftFrontWheelCollider.sidewaysFriction;
-            frontWFC = rightFrontWheelCollider.sidewaysFriction;
-            backwheelFrition = rightBackWheelCollider.forwardFriction;
-            backwheelFrition = leftBackWheelCollider.forwardFriction;
-
-
-            backwheelFrition.stiffness = 0.6f;
-            wFC.extremumSlip = 0.5f;
-            wFC.stiffness = 0.8f;
-           
-            frontWFC.extremumSlip = 0.23f;           
-            frontWFC.stiffness = 0.8f;
-          
-
-            rightBackWheelCollider.sidewaysFriction = wFC;
-            leftBackWheelCollider.sidewaysFriction = wFC;
-            rightBackWheelCollider.forwardFriction = backwheelFrition;
-            leftBackWheelCollider.forwardFriction = backwheelFrition;
-           
-            rightFrontWheelCollider.sidewaysFriction = frontWFC;
-            leftFrontWheelCollider.sidewaysFriction = frontWFC;
-           
-        }
-
-        else
-        {
-            wFC = leftBackWheelCollider.sidewaysFriction;
-            wFC = rightBackWheelCollider.sidewaysFriction;
-            frontWFC = leftFrontWheelCollider.sidewaysFriction;
-            frontWFC = rightFrontWheelCollider.sidewaysFriction;
-            backwheelFrition = rightBackWheelCollider.forwardFriction;
-            backwheelFrition = leftBackWheelCollider.forwardFriction;
-
-            wFC.extremumSlip = 0.1f;
-            wFC.stiffness = 1.5f;
-            backwheelFrition.stiffness = 1f;
-            
-            
-            frontWFC.extremumSlip = 0.1f;          
-            frontWFC.stiffness = 1.5f;
-
-            rightBackWheelCollider.sidewaysFriction = wFC;
-            leftBackWheelCollider.sidewaysFriction = wFC;
-            rightBackWheelCollider.forwardFriction = backwheelFrition;
-            leftBackWheelCollider.forwardFriction = backwheelFrition;
-
-            rightFrontWheelCollider.sidewaysFriction = frontWFC;
-            leftFrontWheelCollider.sidewaysFriction = frontWFC;
+            speed = rb.velocity.magnitude;
+            driftAngle = Vector3.Angle(rb.transform.forward, (rb.velocity + rb.transform.forward).normalized);
 
         }
+
+
+
+
     }
+
+  
 
     private void CarBreaking()
     {
