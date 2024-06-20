@@ -58,9 +58,24 @@ public class Cash : MonoBehaviour
 
         IEnumerator Lose()
         {
-
+            int currentScene = SceneManager.GetActiveScene().buildIndex;
             yield return new WaitForSeconds(waitTime);
-            SceneManager.LoadScene("Lose Scene");
+
+            if(currentScene < 4)
+            {
+                SceneManager.LoadScene("Lose Scene");
+            }
+
+            if (currentScene > 4)
+            {
+                SceneManager.LoadScene("Lose Scene 1");
+            }
+
+            if (currentScene > 7)
+            {
+                SceneManager.LoadScene("Lose Scene 2");
+            }
+
         }
 
         IEnumerator Cutscene()
@@ -71,6 +86,19 @@ public class Cash : MonoBehaviour
                 yield return new WaitForSeconds(waitTime);
                 SceneManager.LoadScene("Cutscene 1");
             }
+
+            if (currentScene  > 4)
+            {
+                yield return new WaitForSeconds(waitTime);
+                SceneManager.LoadScene("Cutscene for level 2");
+            }
+
+            if (currentScene > 7)
+            {
+                SceneManager.LoadScene("Win");
+            }
+
+
 
         }
 

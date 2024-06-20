@@ -9,6 +9,7 @@ TagManager:
   - SubtractMoney
   - Npc
   - NPC
+  - Reset
   layers:
   - Default
   - TransparentFX

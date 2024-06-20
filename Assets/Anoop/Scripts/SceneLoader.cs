@@ -37,7 +37,12 @@ public class SceneLoader : MonoBehaviour
 
     public void Level2()
     {
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene("Level 2");
+    }
+
+    public void Level3()
+    {
+        SceneManager.LoadScene("Level 3");
     }
 
     public void StartScene()

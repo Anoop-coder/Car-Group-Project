@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.PlasticSCM.Editor.WebApi;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -10,7 +12,18 @@ public class Movement : MonoBehaviour
 {
     //Created by Jayden, dont edit it
 
+
+    internal enum driveType
+    {
+        frontWheelDrive,
+        allWheelDrive
+    }
+
+    [SerializeField] private driveType drive;
+    
     Cash cash;
+
+    [SerializeField] TextMeshProUGUI angleText;
 
     [SerializeField] float carSpeed = 0f;
     [SerializeField] float accelCar = 500f;
@@ -22,14 +35,19 @@ public class Movement : MonoBehaviour
     [SerializeField] public float currentBreakForce = 0f;
     [SerializeField] public float breakForce = 300f;
 
+ 
+
     float driftAngle = 0f;
-    float driftFactor = 0f;
+    float driftFactor = 1f;
     float speed = 0f;
-    public float minSpeed = 5f;
-    public float minAngle = 10f;
     bool isDrifting = false;
 
-    
+    public float minSpeed = 5f;
+    public float minAngle = 10f;
+
+    public float downForce = 50f;
+
+
     [SerializeField] WheelCollider leftFrontWheelCollider;
     [SerializeField] WheelCollider rightFrontWheelCollider;
     [SerializeField] WheelCollider leftBackWheelCollider;
@@ -40,22 +58,59 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform leftBackWheel;
     [SerializeField] Transform rightBackWheel;
 
-    public WheelFrictionCurve wFC;
-    public WheelFrictionCurve frontWFC;
-    public WheelFrictionCurve backwheelFrition;
+    public WheelFrictionCurve backwFCSide;
+    public WheelFrictionCurve frontWFCSide;
+    public WheelFrictionCurve backwheelFront;
+    public WheelFrictionCurve frontWFCFront;
 
     AudioSource carSource;
     public AudioClip carEngine;
 
     [SerializeField] private float rotY;
- 
+    [SerializeField] float rotationSpeed = 30f;
+    [SerializeField] float turnFaster = 4f;
+    [SerializeField] float turnFasterDrift = 2;
+    [SerializeField] float carSpeedRound;
 
-    [SerializeField] float rotationSpeed = 50f;
-
-     public Rigidbody rb;
+    public Rigidbody rb;
 
 
     public AudioClip bangAudio;
+
+
+    [Header("Extremum")]
+
+    [SerializeField] public float backSidewaysESlip = 0.1f;
+    [SerializeField] public float backForwardESlip = 0.3f;
+
+    [SerializeField] public float backSidewaysEValue = 1.5f;
+    [SerializeField] public float backForwardEValue = 2f;
+
+    [SerializeField] public float frontSidewaysEValue = 1.5f;
+    [SerializeField] public float frontForwardEValue = 1.5f;
+
+    [SerializeField] public float frontSidewaysESlip = 0.12f;
+    [SerializeField] public float frontForwardESlip = 0.1f;
+
+ 
+
+    [Header("Extremum Drift")]
+   
+    [SerializeField] public float backSidewaysESlipDrift = 0.3f;
+    [SerializeField] public float backForwardESlipDrift = 0.3f;
+
+    [SerializeField] public float backSidewaysEValueDrift = 2f;
+    [SerializeField] public float backForwardEValueDrift = 2f;
+
+    [SerializeField] public float frontSidewaysEValueDrift = 1.5f;
+    [SerializeField] public float frontForwardEValueDrift = 1.5f;
+
+    [SerializeField] public float frontSidewaysESlipDrift = 0.12f;
+    [SerializeField] public float frontForwardESlipDrift = 0.1f;
+
+  
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,145 +130,142 @@ public class Movement : MonoBehaviour
         CarBreaking();
         CarReset();
         CarDrifting();
+        CarWheelControl();
+     
         mag = rb.velocity.magnitude;
         wheelMovement(rightBackWheelCollider, rightBackWheel);
         wheelMovement(rightFrontWheelCollider, rightFrontWheel);
         wheelMovement(leftBackWheelCollider, leftBackWheel);
         wheelMovement(leftFrontWheelCollider, leftFrontWheel);
+
+
        
-       
+    }
+
+    private void CarWheelControl()
+    {
+
+        backwFCSide = leftBackWheelCollider.sidewaysFriction;
+        backwFCSide = rightBackWheelCollider.sidewaysFriction;
+
+        frontWFCSide = leftFrontWheelCollider.sidewaysFriction;
+        frontWFCSide = rightFrontWheelCollider.sidewaysFriction;
+
+        backwheelFront = rightBackWheelCollider.forwardFriction;
+        backwheelFront = leftBackWheelCollider.forwardFriction;
+
+        frontWFCFront = leftFrontWheelCollider.forwardFriction;
+        frontWFCFront = rightBackWheelCollider.forwardFriction;
+
+
 
     }
 
     private void CarDrifting()
     {
         if (Input.GetKey(KeyCode.LeftShift))
-
         {
+            backwFCSide = leftBackWheelCollider.sidewaysFriction;
+            backwFCSide = rightBackWheelCollider.sidewaysFriction;
 
-            wFC = leftBackWheelCollider.sidewaysFriction;
+            frontWFCSide = leftFrontWheelCollider.sidewaysFriction;
+            frontWFCSide = rightFrontWheelCollider.sidewaysFriction;
 
-            wFC = rightBackWheelCollider.sidewaysFriction;
+            backwheelFront = rightBackWheelCollider.forwardFriction;
+            backwheelFront = leftBackWheelCollider.forwardFriction;
 
-            frontWFC = leftFrontWheelCollider.sidewaysFriction;
-
-            frontWFC = rightFrontWheelCollider.sidewaysFriction;
-
-            backwheelFrition = rightBackWheelCollider.forwardFriction;
-
-            backwheelFrition = leftBackWheelCollider.forwardFriction;
-
+            frontWFCFront = leftFrontWheelCollider.forwardFriction;
+            frontWFCFront = rightBackWheelCollider.forwardFriction;
 
 
+            backwFCSide.extremumSlip = backSidewaysESlipDrift;
+            backwFCSide.extremumValue = backSidewaysEValueDrift;
+           
+            backwheelFront.extremumSlip = backForwardESlipDrift;
+            backwheelFront.extremumValue = backForwardESlipDrift;
+
+            frontWFCSide.extremumSlip = frontSidewaysESlipDrift;
+            frontWFCSide.extremumValue = frontSidewaysEValueDrift;
+
+            frontWFCFront.extremumSlip = frontForwardESlipDrift;
+            frontWFCFront.extremumValue = frontSidewaysEValueDrift;
+
+            
 
 
-            backwheelFrition.stiffness = 0.6f;
+            rightBackWheelCollider.sidewaysFriction = backwFCSide;
+            leftBackWheelCollider.sidewaysFriction = backwFCSide;
 
-            wFC.extremumSlip = 0.5f;
+             leftFrontWheelCollider.sidewaysFriction = frontWFCSide;
+             rightFrontWheelCollider.sidewaysFriction = frontWFCSide;
 
-            wFC.stiffness = 0.8f;
-
-
-
-            frontWFC.extremumSlip = 0.23f;
-
-            frontWFC.stiffness = 0.8f;
+            rightBackWheelCollider.forwardFriction = backwheelFront;
+            leftBackWheelCollider.forwardFriction = backwheelFront;
 
 
-
-
-
-            rightBackWheelCollider.sidewaysFriction = wFC;
-
-            leftBackWheelCollider.sidewaysFriction = wFC;
-
-            rightBackWheelCollider.forwardFriction = backwheelFrition;
-
-            leftBackWheelCollider.forwardFriction = backwheelFrition;
-
-
-
-            rightFrontWheelCollider.sidewaysFriction = frontWFC;
-
-            leftFrontWheelCollider.sidewaysFriction = frontWFC;
-
-
+            rightFrontWheelCollider.forwardFriction = frontWFCFront;
+            leftFrontWheelCollider.forwardFriction = frontWFCFront;
 
         }
-
-
 
         else
-
         {
+            backwFCSide = leftBackWheelCollider.sidewaysFriction;
+            backwFCSide = rightBackWheelCollider.sidewaysFriction;
 
-            wFC = leftBackWheelCollider.sidewaysFriction;
+            frontWFCSide = leftFrontWheelCollider.forwardFriction;
+            frontWFCSide = rightFrontWheelCollider.forwardFriction;
 
-            wFC = rightBackWheelCollider.sidewaysFriction;
+            backwheelFront = rightBackWheelCollider.forwardFriction;
+            backwheelFront = leftBackWheelCollider.forwardFriction;
 
-            frontWFC = leftFrontWheelCollider.sidewaysFriction;
+            frontWFCFront = leftFrontWheelCollider.forwardFriction;
+            frontWFCFront = rightBackWheelCollider.forwardFriction;
 
-            frontWFC = rightFrontWheelCollider.sidewaysFriction;
+           
+            backwFCSide.extremumSlip = backSidewaysESlip;
+            backwFCSide.extremumValue = backForwardEValue;
 
-            backwheelFrition = rightBackWheelCollider.forwardFriction;
+            backwheelFront.extremumSlip = backForwardESlip;
+            backwheelFront.extremumValue = backForwardEValue;
 
-            backwheelFrition = leftBackWheelCollider.forwardFriction;
+            frontWFCSide.extremumSlip = frontSidewaysESlip;
+            frontWFCSide.extremumValue = frontSidewaysEValue;
 
-
-
-            wFC.extremumSlip = 0.1f;
-
-            wFC.stiffness = 1.5f;
-
-            backwheelFrition.stiffness = 1f;
-
-
-
-
-
-            frontWFC.extremumSlip = 0.1f;
-
-            frontWFC.stiffness = 1.5f;
+            frontWFCFront.extremumSlip = frontForwardESlip;
+            frontWFCFront.extremumValue = frontSidewaysEValue;
 
 
 
-            rightBackWheelCollider.sidewaysFriction = wFC;
 
-            leftBackWheelCollider.sidewaysFriction = wFC;
+            rightBackWheelCollider.sidewaysFriction = backwFCSide;
+            leftBackWheelCollider.sidewaysFriction = backwFCSide;
 
-            rightBackWheelCollider.forwardFriction = backwheelFrition;
+            leftFrontWheelCollider.sidewaysFriction = frontWFCSide;
+            rightFrontWheelCollider.sidewaysFriction = frontWFCSide;
 
-            leftBackWheelCollider.forwardFriction = backwheelFrition;
-
-
-
-            rightFrontWheelCollider.sidewaysFriction = frontWFC;
-
-            leftFrontWheelCollider.sidewaysFriction = frontWFC;
+            rightBackWheelCollider.forwardFriction = backwheelFront;
+            leftBackWheelCollider.forwardFriction = backwheelFront;
 
 
-
+            rightFrontWheelCollider.forwardFriction = frontWFCFront;
+            leftFrontWheelCollider.forwardFriction = frontWFCFront;
         }
-
-
-
-
     }
 
-  
 
     private void CarBreaking()
     {
         if (Input.GetKey(KeyCode.Space))
         {
             currentBreakForce = breakForce;
-            
+
         }
 
         else
         {
             currentBreakForce = 0;
-           
+
         }
 
         leftBackWheelCollider.brakeTorque = currentBreakForce;
@@ -225,16 +277,26 @@ public class Movement : MonoBehaviour
 
     private void CarRotation()
     {
-        if(mag < 10)
-        {
-            mag = 1.25f;
-        }
-        rotY = Input.GetAxis("Rotation") * rotationSpeed * 2f /mag;
+         
+        rotY = Input.GetAxis("Rotation") * rotationSpeed;
+     
         
-        rightFrontWheelCollider.steerAngle = rotY;              
-        leftFrontWheelCollider.steerAngle = rotY;
-       
-          
+        
+        if(drive == driveType.frontWheelDrive)
+        {
+            rightFrontWheelCollider.steerAngle = rotY;
+            leftFrontWheelCollider.steerAngle = rotY;
+        }
+
+        if (drive == driveType.allWheelDrive)
+        {
+            rightBackWheelCollider.steerAngle = -rotY;
+            leftBackWheelCollider.steerAngle = -rotY;
+            rightFrontWheelCollider.steerAngle = rotY;
+            leftFrontWheelCollider.steerAngle = rotY;
+        }
+
+      
 
 
 
@@ -251,6 +313,12 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.CompareTag("SubtractMoney"))
         {
             cash.cashGet = cash.cashGet - cash.carHitSubtract;
+        }
+
+        if (collision.gameObject.CompareTag("Reset"))
+        {
+            int currentScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentScene);
         }
     }
 

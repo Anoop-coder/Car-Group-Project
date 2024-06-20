@@ -12,35 +12,41 @@ EditorBuildSettings:
     path: Assets/Anoop/Scenes/Level 1.unity
     guid: cfd46ce669c13564da7a318705e70e87
   - enabled: 1
+    path: Assets/Anoop/Scenes/Lose Scene.unity
+    guid: e2779a88a03ee984ba69bc8f1497ec69
+  - enabled: 1
     path: Assets/Anoop/Scenes/Cutscene 1.unity
     guid: 4cc03b128e800694bafe29e11369e63a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Anoop/Scenes/Level 1 Charger.unity
     guid: 803e651d826654b468c01a29a8888cfc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Anoop/Scenes/Level 1 koins.unity
     guid: f1a12e0c564cbeb4a99a64e62f61c75e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Anoop/Scenes/Level 2 charger.unity
     guid: 518f45e2f7661904087aef40ba8bca29
-  - enabled: 1
+  - enabled: 0
     path: Assets/Anoop/Scenes/Level 2 koin.unity
     guid: 05f7288cda288924d8aa9fa0f2f9cda1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Anoop/Scenes/Level Select.unity
     guid: aa63e46332cba014b8be1a962137fe8a
   - enabled: 1
     path: Assets/Anoop/Scenes/Level 2.unity
     guid: d7e9958e3c2749d44b1374b4d4e9b23d
+  - enabled: 1
+    path: Assets/Anoop/Scenes/Lose Scene 1.unity
+    guid: f66806b470d27b3489730ff78928a4bf
+  - enabled: 1
+    path: Assets/Anoop/Scenes/Cutscene for level 2.unity
+    guid: 6d5605f304df8514c9ff289fdad24ac1
   - enabled: 0
     path: Assets/Anoop/Scenes/Level Select charger.unity
     guid: fb22d81456f9c184395eb6627d9fb6b6
   - enabled: 0
     path: Assets/Anoop/Scenes/Level Select koins.unity
     guid: 300ad915c74a3f04b964a7b57584e50e
-  - enabled: 1
-    path: Assets/Anoop/Scenes/Lose Scene.unity
-    guid: e2779a88a03ee984ba69bc8f1497ec69
   - enabled: 1
     path: Assets/Anoop/Scenes/Shop.unity
     guid: 5e7ab0f001fb06f4b8b0a2faaa905739
@@ -50,4 +56,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Anoop/Scenes/Shop 3.unity
     guid: d6420e470bdb0ea4985914a8a8d98597
+  - enabled: 1
+    path: Assets/Anoop/Scenes/Level 3.unity
+    guid: e15872e5b3cf3ad4989c19f8b97c3de7
+  - enabled: 1
+    path: Assets/Anoop/Scenes/Lose Scene 2.unity
+    guid: 19410387241bde6478ba83917b9d42b3
   m_configObjects: {}

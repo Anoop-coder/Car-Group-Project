@@ -52,7 +52,7 @@ public class ShopChange : MonoBehaviour
                 playC.gameObject.SetActive(true);
                 buy.gameObject.SetActive(false);
             }
-            if (currentCar == 1)
+            if (currentCar == 2)
             {
                 playK.gameObject.SetActive(true);
                 buy.gameObject.SetActive(false);
@@ -68,7 +68,7 @@ public class ShopChange : MonoBehaviour
             playC.gameObject.SetActive(false);
             playK.gameObject.SetActive(false);
             buy.gameObject.SetActive(true);
-            textPrice.text = carPrices[currentCar] + "$";
+            textPrice.text = carPrices[currentCar] + "";
         }
 
         
