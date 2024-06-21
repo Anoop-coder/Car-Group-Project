@@ -10,4 +10,9 @@ public class Dialoguetrigger2 : MonoBehaviour
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue); 
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+    }
 }

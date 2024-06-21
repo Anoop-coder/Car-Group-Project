@@ -31,7 +31,7 @@ public class Cash : MonoBehaviour
 
     public void Update()
     {
-        cashText.text = SaveManager.instance.money.ToString();
+        cashText.text = "Cash: " + SaveManager.instance.money.ToString();
         racePlace();
     }
 
@@ -66,7 +66,7 @@ public class Cash : MonoBehaviour
                 SceneManager.LoadScene("Lose Scene");
             }
 
-            if (currentScene > 4)
+            if (currentScene >=  4 & currentScene < 7)
             {
                 SceneManager.LoadScene("Lose Scene 1");
             }
@@ -87,7 +87,7 @@ public class Cash : MonoBehaviour
                 SceneManager.LoadScene("Cutscene 1");
             }
 
-            if (currentScene  > 4)
+            if (currentScene  >=  4 & currentScene < 7)
             {
                 yield return new WaitForSeconds(waitTime);
                 SceneManager.LoadScene("Cutscene for level 2");
@@ -95,7 +95,7 @@ public class Cash : MonoBehaviour
 
             if (currentScene > 7)
             {
-                SceneManager.LoadScene("Win");
+                SceneManager.LoadScene("Cutscene for level 3");
             }
 
 

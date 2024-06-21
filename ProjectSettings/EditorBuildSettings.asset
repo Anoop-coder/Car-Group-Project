@@ -62,4 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Anoop/Scenes/Lose Scene 2.unity
     guid: 19410387241bde6478ba83917b9d42b3
+  - enabled: 1
+    path: Assets/Anoop/Scenes/Cutscene for level 3.unity
+    guid: d14c67b8622cb8643b75cf7071b6680f
   m_configObjects: {}

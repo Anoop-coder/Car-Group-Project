@@ -364,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4931d0884ef79fa46a6e0c2305186e5c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4931d0884ef79fa46a6e0c2305186e5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -475,9 +475,6 @@ PrefabInstance:
       addedObject: {fileID: 8212619538759164461}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4931d0884ef79fa46a6e0c2305186e5c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1876599076214298412}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4931d0884ef79fa46a6e0c2305186e5c, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7046053975075340622}
   m_SourcePrefab: {fileID: 100100000, guid: 4931d0884ef79fa46a6e0c2305186e5c, type: 3}
 --- !u!4 &639137121174227876 stripped
@@ -544,6 +541,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909c185fc0e61634086958840af75469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drive: 0
+  angleText: {fileID: 0}
   carSpeed: 0
   accelCar: 3000
   maxSpeed: 40
@@ -553,6 +552,7 @@ MonoBehaviour:
   breakForce: 5000
   minSpeed: 5
   minAngle: 10
+  downForce: 50
   leftFrontWheelCollider: {fileID: 8955170951457868882}
   rightFrontWheelCollider: {fileID: 8138528417511536049}
   leftBackWheelCollider: {fileID: 2883675554991601089}
@@ -564,6 +564,9 @@ MonoBehaviour:
   carEngine: {fileID: 8300000, guid: 272ca4f144a9d4347b08ad203f7633cf, type: 3}
   rotY: 0
   rotationSpeed: 50
+  turnFaster: 4
+  turnFasterDrift: 2
+  carSpeedRound: 0
   rb: {fileID: 3813708507747753441}
   bangAudio: {fileID: 8300000, guid: e54f2a43ef85aab49bb3052616c6b47f, type: 3}
 --- !u!82 &8212619538759164461
@@ -662,27 +665,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &1876599076214298412
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7978202778848734214}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.1726198, y: 1.0242722, z: 4.1141853}
-  m_Center: {x: -5.2176557, y: 0.08988491, z: 11.687756}
 --- !u!114 &7046053975075340622
 MonoBehaviour:
   m_ObjectHideFlags: 0
